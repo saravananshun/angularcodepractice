@@ -3,15 +3,17 @@
   <div class="card w-100 p-3">
 
     <div class="card-header">
-      <h5 class="card-title">Address</h5>
-
+      <div class="d-flex justify-content-between">
+        <h5 class="card-title">Address</h5>
+        <i class="fa fa-edit" (click)="editAddressFn(true)" style="cursor: pointer"></i>
+      </div>
     </div>
     <div class="card-body">
-
-      <form>
+      <form *ngIf="!editAddress">
         <div class="form-group">
           <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                 placeholder="Enter email">
           <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div class="form-group">
@@ -22,7 +24,39 @@
           <input type="checkbox" class="form-check-input" id="exampleCheck1">
           <label class="form-check-label" for="exampleCheck1">Check me out</label>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="flex-row" >
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" role="link" class="btn btn-link" style="margin: 10px" (click)="editAddressFn(false)">Cancel</button>
+        </div>
+      </form>
+
+      <form *ngIf="editAddress">
+        <!-- address-line1 input-->
+        <div class="form-group">
+          <label for="editAddrLine1">Address Line 1</label>
+          <input id="address-line1" name="address-line1" type="text" placeholder="address line 1"
+                 id="editAddrLine1" class="form-control">
+        </div>
+        <!-- address-line2 input-->
+        <div class="form-group">
+          <label for="editAddrLine2">Address Line 2</label>
+          <input id="address-line2" name="address-line2" type="text" placeholder="address line 2"
+                 id="editAddrLine2" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label for="country">Country</label>
+          <select id="country" name="country" class="form-control">
+            <option value="" selected="selected">(please select a country)</option>
+            <option value="US">United States</option>
+          </select>
+        </div>
+
+        <div class="flex-row">
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" role="link" class="btn btn-link" style="margin: 10px" (click)="editAddressFn(false)">Cancel</button>
+        </div>
+
       </form>
 
     </div>

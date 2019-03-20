@@ -9,9 +9,15 @@ declare var $: any;
 })
 export class PracticeComponent implements OnInit {
 
+  editAddress:boolean = false;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public editAddressFn(show){
+    this.editAddress = show;
   }
 
 }
